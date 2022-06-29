@@ -1,7 +1,16 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 
+import CardComponent from './components/Card'
+import TitleComponent from './components/Title'
+import SubTitleComponent from './components/SubTitle'
+
 function App() {
+  const title = 'Countdown to my birthday'
+  const subTitle =
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo quas obcaecati atque? Aliquam architecto illum, dignissimos, amet incidunt at expedita quia, ex error molestiae impedit in est. Numquam, soluta dolor.'
+
+  //state
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
@@ -46,30 +55,13 @@ function App() {
   return (
     <div className='container'>
       <div className='countdown'>
-        <h1 className='countdown__title'>Countdown to my birthday</h1>
-        <p className='countdown__sub-title'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo quas
-          obcaecati atque? Aliquam architecto illum, dignissimos, amet incidunt
-          at expedita quia, ex error molestiae impedit in est. Numquam, soluta
-          dolor.
-        </p>
+        <TitleComponent title={title} />
+        <SubTitleComponent subTitle={subTitle} />
         <div className='countdown__group'>
-          <div className='countdown__card'>
-            <div className='countdown__card--time'>{time.days}</div>
-            <div className='countdown__card--title'>Day</div>
-          </div>
-          <div className='countdown__card'>
-            <div className='countdown__card--time'>{time.hours}</div>
-            <div className='countdown__card--title'>Hours</div>
-          </div>
-          <div className='countdown__card'>
-            <div className='countdown__card--time'>{time.minutes}</div>
-            <div className='countdown__card--title'>Minutes</div>
-          </div>
-          <div className='countdown__card'>
-            <div className='countdown__card--time'>{time.seconds}</div>
-            <div className='countdown__card--title'>Seconds</div>
-          </div>
+          <CardComponent time={time.days} title='Days' />
+          <CardComponent time={time.hours} title='Hours' />
+          <CardComponent time={time.minutes} title='Minutes' />
+          <CardComponent time={time.seconds} title='Seconds' />
         </div>
       </div>
     </div>

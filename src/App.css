@@ -48,6 +48,8 @@
   margin-top: 40px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 .countdown__card {
   background-color: #79b3f4;
