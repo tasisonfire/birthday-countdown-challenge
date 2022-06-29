@@ -1,8 +1,77 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container {
+  background-image: linear-gradient(
+    to right top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdown {
+  max-width: 800px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.countdown__title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.countdown__sub-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #ffffff;
+}
+.countdown__group {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.countdown__card {
+  background-color: #79b3f4;
+  height: 160px;
+  width: 160px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: -20px -20px 0px 0px #ffffff4c;
+}
+.countdown__card--time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 700;
+  height: 120px;
+}
+.countdown__card--title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: #ffffff;
+  color: #666666;
+  font-size: 1.25rem;
 }
