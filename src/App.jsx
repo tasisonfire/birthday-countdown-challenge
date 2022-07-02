@@ -19,14 +19,13 @@ function App() {
 
   const getCountdown = (birthDate) => {
     let now = new Date().getTime()
-    let timeCount = birthDate - now
+    let timeCount = (birthDate - now) / 1000 //convert milliseconds to seconds
 
-    let days = Math.floor(timeCount / (1000 * 60 * 60 * 24))
-    let hours = Math.floor(
-      (timeCount % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    )
-    let minutes = Math.floor((timeCount % (1000 * 60 * 60)) / (1000 * 60))
-    let seconds = Math.floor((timeCount % (1000 * 60)) / 1000)
+    let days = Math.floor(timeCount / (60 * 60 * 24)) //convert seconds to days
+    let hours = Math.floor((timeCount % (60 * 60 * 24)) / (60 * 60)) //convert seconds to hours
+    let minutes = Math.floor((timeCount % (60 * 60)) / 60) //convert seconds to minutes
+    let seconds = Math.floor(timeCount % 60) //convert to seconds
+
     return [days, hours, minutes, seconds]
   }
 
