@@ -6,26 +6,23 @@ function App() {
   //state
   const [time, setTime] = useState(new Date())
 
-  //<----------don't edit ---------->
   //function input TimeStamp and then return day,hours,minutes and seconds
   const getCountdown = (birthDate) => {
     let now = new Date().getTime()
-    let timeCount = birthDate - now
+    let timeCount = birthDate - now //convert milliseconds to seconds
 
-    let days = Math.floor(timeCount / (1000 * 60 * 60 * 24))
+    let days = Math.floor(timeCount / (60 * 60 * 24)) //convert seconds to days
     let hours = Math.floor(
-      (timeCount % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      (timeCount % (60 * 60 * 24)) / (60 * 60) //convert seconds to hours
     )
-    let minutes = Math.floor((timeCount % (1000 * 60 * 60)) / (1000 * 60))
-    let seconds = Math.floor((timeCount % (1000 * 60)) / 1000)
+    // let minutes
+    // let seconds
 
-    return [days, hours, minutes, seconds]
+    return [days, hours]
   }
 
   useEffect(() => {
     const intervalTask = setInterval(() => {
-      let birthDay = '11/26/2022' //your next birth date
-
       setTime(new Date())
     }, 1000) //1000 millisecond = 1 second
     return () => clearInterval(intervalTask)
