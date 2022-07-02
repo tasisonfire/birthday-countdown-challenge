@@ -38,8 +38,8 @@ function App() {
 
   useEffect(() => {
     setInterval(() => {
-      let day = 29 //your birth days
-      let month = 6 //your month days
+      let day = 26 //your birth days
+      let month = 11 //your month days
       let year =
         new Date().getMonth() + 1 > month
           ? new Date().getFullYear() + 1
