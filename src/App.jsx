@@ -6,9 +6,20 @@ function App() {
   //state
   const [time, setTime] = useState(new Date());
 
-  const timeNow = new Date();
-  const getMonth = timeNow.getMonth() + 1;
-  const dayNow = Math.floor(timeNow / (60 * 60 * 24));
+  const timeNow = new Date().getTime();
+  // const getMonth = timeNow.getMonth() + 1;
+  // const dayNow = Math.floor(timeNow / (60 * 60 * 24));
+  const countDownDate = new Date("June 27, 2023 00:00:00").getTime();
+  const countDownDateToDay = Math.floor(countDownDate / (60 * 60 * 60 * 24));
+  const epicDate = new Date(0);
+
+  const birthDay = 2;
+  const birthMonth = 10;
+  const birthYear = 2023;
+
+  const check = `${birthYear}, ${birthMonth}, ${birthDay}`;
+  const birthDate = new Date(check).getTime();
+  // console.log(birthDate);
 
   //function input TimeStamp and then return day,hours,minutes and seconds
   const getCountdown = (birthDate) => {
@@ -34,7 +45,11 @@ function App() {
 
   return (
     <div className="container">
-      {getMonth}
+      {timeNow}
+      <br />
+      {countDownDate}
+      <br />
+      {countDownDateToDay}
       <br />
       {time.getDate()}/{time.getMonth() + 1}/{time.getFullYear()}{" "}
       {time.getHours()}:{time.getMinutes() + 1}:{time.getSeconds()}
