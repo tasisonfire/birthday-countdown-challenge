@@ -5,37 +5,35 @@ import "./App.css";
 function App() {
   //state
   const [time, setTime] = useState(new Date());
+  const [countDown, setCountDown] = useState();
 
-  const timeNow = new Date().getTime();
-  // const getMonth = timeNow.getMonth() + 1;
-  // const dayNow = Math.floor(timeNow / (60 * 60 * 24));
-  const nowDate = new Date("June 28, 2023 00:00:00").getTime();
-  const countDownDate = new Date("October 02, 2023 00:00:00").getTime();
-  const countDownDateToDay = Math.floor(countDownDate / (60 * 60 * 24));
-  const result = Math.floor(countDownDate - nowDate);
-  const convToDay = Math.floor(result / (60 * 60 * 24));
+  // const nowDate = new Date("June 28, 2023 00:00:00").getTime();
+  let nowDate = new Date().getTime();
+  const birthDate = new Date("July 01, 2023 00:00:00").getTime();
+  let distance = birthDate - nowDate;
+  let newDays = Math.floor(distance / (1000 *60 * 60 * 24));
+  let newHours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  let newMins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let newSecs = Math.floor((distance % (1000 * 60)) / (1000));
 
-  const birthDay = 2;
-  const birthMonth = 10;
-  const birthYear = 2023;
-
-  const check = `${birthYear}, ${birthMonth}, ${birthDay}`;
-  const birthDate = new Date(check).getTime();
-  // console.log(birthDate);
 
   //function input TimeStamp and then return day,hours,minutes and seconds
   const getCountdown = (birthDate) => {
     let now = new Date().getTime();
     let timeCount = birthDate - now; //convert milliseconds to seconds
 
-    let days = Math.floor(timeCount / (60 * 60 * 24)); //convert seconds to days
-    let hours = Math.floor(
-      (timeCount % (60 * 60 * 24)) / (60 * 60) //convert seconds to hours
-    );
+    // let days
+    let days = Math.floor(timeCount / (1000 * 60 * 60 * 24));
+    // let hours
+    let hours = days / 24;
     // let minutes
+    let minutes = Math.floor(hours / 60);
     // let seconds
+    let seconds = Math.floor(minutes / 60);
 
-    return [days, hours];
+    return [days, hours, minutes, seconds];
   };
 
   useEffect(() => {
@@ -47,15 +45,15 @@ function App() {
 
   return (
     <div className="container">
-      {nowDate}
+      Start: {distance}
       <br />
-      {countDownDate}
+      Days: {newDays}
       <br />
-      {countDownDateToDay}
+      Hours: {newHours}
       <br />
-      result: {result}
+      Mins: {newMins}
       <br />
-      converted: {convToDay}
+      Secs: {newSecs}
       <br />
       {time.getDate()}/{time.getMonth() + 1}/{time.getFullYear()}{" "}
       {time.getHours()}:{time.getMinutes() + 1}:{time.getSeconds()}
